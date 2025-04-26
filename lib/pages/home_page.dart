@@ -77,84 +77,92 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
         ),
-      body: Column(children: [
-        //find the best coffee text
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25.0),
-          child: Text(
-            'Find the best coffee for you !!',
-            style: GoogleFonts.bebasNeue(
-             textStyle: TextStyle(
-             fontSize: 56,
-            color: Colors.white,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 20.0),
+            child: Column(children: [
+              //find the best coffee text
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Text(
+                  'Find the best coffee for you !!',
+                  style: GoogleFonts.bebasNeue(
+                   textStyle: TextStyle(
+                   fontSize: 56,
+                  color: Colors.white,
+                    ),
+                    ),
+                  ),
               ),
+            
+              SizedBox(height: 25,),
+            
+              //search bar
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: TextField(
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.search),
+                    hintText: 'Find your coffee...',
+                    focusedBorder: OutlineInputBorder(
+                       borderSide: BorderSide(color: Colors.grey.shade600),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey.shade600),
+                    ),
+                  ),
+                ),
               ),
-            ),
-        ),
-
-        SizedBox(height: 25,),
-
-        //search bar
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25.0),
-          child: TextField(
-            decoration: InputDecoration(
-              prefixIcon: Icon(Icons.search),
-              hintText: 'Find your coffee...',
-              focusedBorder: OutlineInputBorder(
-                 borderSide: BorderSide(color: Colors.grey.shade600),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.grey.shade600),
-              ),
-            ),
-          ),
-        ),
-
-        SizedBox(height:25),
-        
-        // horizontal list view of coffee types
-        Container(
-          height: 50,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: coffeeType.length,
-            itemBuilder: (context,index) {
-            return CoffeeType(
-              coffeeType: coffeeType[index][0],
-               isSelected: coffeeType[index][1],
-                onTap: () {
-                  coffeeTypeSelected(index);
+            
+              SizedBox(height:25),
+              
+              // horizontal list view of coffee types
+              Container(
+                height: 50,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: coffeeType.length,
+                  itemBuilder: (context,index) {
+                  return CoffeeType(
+                    coffeeType: coffeeType[index][0],
+                     isSelected: coffeeType[index][1],
+                      onTap: () {
+                        coffeeTypeSelected(index);
+                      },
+                    );
                 },
-              );
-          },
-          ),
-        ),
-
-        //horizontal list view of coffee tiles
-        Expanded(
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            children: [
-              CoffeeTile(
-                coffeeImagePath: 'lib/images/latte.jpg',
-                cofeeName: 'Latte',
-                coffeePrice: '350',
+                ),
               ),
-              CoffeeTile(
-                coffeeImagePath: 'lib/images/cappucino.jpg',
-                cofeeName: 'Cappucino',
-                coffeePrice: '300',
-              ),
-              CoffeeTile(
-                coffeeImagePath: 'lib/images/milk.jpg',
-                cofeeName: 'Milk Coffee',
-                coffeePrice: '450',
+            
+              //horizontal list view of coffee tiles
+              SizedBox(
+                height: 350,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    CoffeeTile(
+                      coffeeImagePath: 'lib/images/latte.jpg',
+                      cofeeName: 'Latte',
+                      coffeePrice: '350',
+                    ),
+                    CoffeeTile(
+                      coffeeImagePath: 'lib/images/cappucino.jpg',
+                      cofeeName: 'Cappucino',
+                      coffeePrice: '300',
+                    ),
+                    CoffeeTile(
+                      coffeeImagePath: 'lib/images/milk.jpg',
+                      cofeeName: 'Milk Coffee',
+                      coffeePrice: '450',
+                    ),
+                  ],
+                ),
               ),
             ],
+            ),
           ),
         ),
-      ],
       ),
     );
   }

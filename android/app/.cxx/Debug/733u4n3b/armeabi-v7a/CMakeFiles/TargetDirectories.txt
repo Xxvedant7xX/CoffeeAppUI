@@ -1,0 +1,2 @@
+C:/Users/Agraw/Desktop/CoffeeAppUI/android/app/.cxx/Debug/733u4n3b/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/Agraw/Desktop/CoffeeAppUI/android/app/.cxx/Debug/733u4n3b/armeabi-v7a/CMakeFiles/rebuild_cache.dir
